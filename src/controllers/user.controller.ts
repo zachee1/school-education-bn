@@ -1,5 +1,5 @@
 import asyncMiddleware from '../middleware/asyncMiddleware';
-import {CREATED,OK} from 'http-status';
+import { CREATED, OK } from 'http-status';
 import { Request, Response } from 'express';
 import { userService } from '../services';
 

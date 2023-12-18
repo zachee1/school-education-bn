@@ -1,5 +1,6 @@
 import express from 'express';
 import { errorMiddleware } from './middleware/errorMiddleware';
+import swaggerRouter from './docs';
 import connectDB from '../config/database';
 import user from './routes/user';
 import cors from 'cors';
@@ -11,6 +12,7 @@ connectDB();
 app.set('port', process.env.PORT || 5000);
 app.use(cors());
 app.use(express.json());
+app.use(swaggerRouter);
 
 app.get('/', (_req, res) => {
   res.send('API Running');

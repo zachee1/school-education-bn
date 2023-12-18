@@ -12,7 +12,7 @@ import User, { IUser } from '../models/User';
 interface Payload {
   userId: string;
   email: string;
-  role:string;
+  role: string;
 }
 
 const signup = async (
@@ -43,7 +43,7 @@ const signup = async (
     const payload: Payload = {
       userId: user.id,
       email: user.email,
-      role:user.role
+      role: user.role
     };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: process.env.JWT_EXPIRATION
@@ -74,7 +74,7 @@ const login = async (email: string, password: string): Promise<string | void> =>
     const payload: Payload = {
       userId: user.id,
       email: user.email,
-      role:user.role
+      role: user.role
     };
 
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
