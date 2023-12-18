@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose';
 import { TUser } from '../types/user';
+import { string } from 'joi';
 
 export enum UserRole {
   STUDENT = 'STUDENT',
@@ -42,5 +43,4 @@ const userSchema: Schema = new Schema({
 });
 
 const User = model<IUser>('User', userSchema);
-
 export default User;

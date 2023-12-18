@@ -1,9 +1,4 @@
-export const sendEmailTemplate = (
-  password: string,
-  staff_id: string,
-  url: string,
-  role: string
-) => {
+export const sendEmailTemplate = (role: string) => {
   return `<!DOCTYPE html>
       <html lang="en">
       <head>
@@ -31,8 +26,6 @@ export const sendEmailTemplate = (
             margin: 0 auto; 
           }
       
-         
-      
           .header h1 {
             font-weight: bold;
             font-size: 1.875rem;
@@ -51,7 +44,7 @@ export const sendEmailTemplate = (
             margin: 0 auto 1.25rem;
             max-width: 15rem;
             object-fit: cover;
-            width: 33%; /* Set the width to 33% */
+            width: 33%;
           }
       
           .main-content div {
@@ -90,32 +83,23 @@ export const sendEmailTemplate = (
         <div class="min-h-screen flex flex-col items-center justify-center">
           <div class="container">
             <header class="header">
-              
-          <img src="https://res.cloudinary.com/dyjy5ilv1/image/upload/v1698304896/image_p4wjvs.png"/>
+              <img src="https://res.cloudinary.com/dyjy5ilv1/image/upload/v1698304896/image_p4wjvs.png"/>
             </header>
       
             <main class="main-content">
               <img src="https://res.cloudinary.com/dyjy5ilv1/image/upload/v1698304896/image_720_htzntq.png" alt="image" width="240"/>
               <div>
-                <h2>Welcome to Assign IT</h2>
+                <h2>Account Created Successfully</h2>
       
-                <p>We are excited to welcome you to our online platform. You have been added as a ${role}. Below is your password and student ID. Click on the claim button to get started.</p>
-      
-                <p>
-                Staff ID: ${staff_id}
-                  <br>
-                  Password: ${password}
-                </p>
-      
-                <a href=${url} target="_blank">
-           <button class="button">Claim Account</button>
-             </a>
+                <p>Congratulations! Your account has been successfully created on Assign IT as a ${role}. Click the button below to get started:</p>
               </div>
             </main>
       
             <footer class="footer">
               <p>&copy; 2023 Assign IT</p>
             </footer>
-      
-      `;
+          </div>
+        </div>
+      </body>
+      </html>`;
 };

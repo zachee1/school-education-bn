@@ -2,6 +2,8 @@ import asyncMiddleware from '../middleware/asyncMiddleware';
 import { CREATED, OK } from 'http-status';
 import { Request, Response } from 'express';
 import { userService } from '../services';
+import { sendEmailTemplate } from '../views/emailTemplate';
+import sendEmail from '../services/email.service';
 
 const signup = asyncMiddleware(async (req: Request, res: Response) => {
   const { firstName, lastName, role, email, password } = req.body;
@@ -11,6 +13,8 @@ const signup = asyncMiddleware(async (req: Request, res: Response) => {
     message: 'Token has been created succesfuly',
     token
   });
+  // send email
+  sendEmail(email, ` ${role} Registration`, sendEmailTemplate(role));
 });
 
 const login = asyncMiddleware(async (req: Request, res: Response) => {

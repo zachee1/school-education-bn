@@ -1,6 +1,6 @@
 import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
-import { NotFoundError } from '../utils/errorHandling';
+import { NotFoundError, InternalServerError } from '../utils/errorHandling';
 
 dotenv.config();
 
@@ -12,7 +12,6 @@ const sendEmail = async (to: string, subject: string, text: string): Promise<voi
     throw new NotFoundError(
       'Gmail email or password is not provided in the environment variables.'
     );
-    return;
   }
 
   const transporter = nodemailer.createTransport({
@@ -32,7 +31,7 @@ const sendEmail = async (to: string, subject: string, text: string): Promise<voi
   try {
     await transporter.sendMail(mailOptions);
   } catch (error) {
-    console.error('Error sending email:', error);
+    throw new NotFoundError(error.message);
   }
 };
 
